@@ -5,6 +5,7 @@ let data: datiAnagrafici = {
   cognome: "Rossi",
   email: "ziopino@gmail.com",
   codiceFiscale: "RSSMRA80A01H501A",
+  
 };
 
 const order = newOrder(data);
