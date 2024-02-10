@@ -9,6 +9,13 @@ export function newOrder(datiAnagrafici: datiAnagrafici): ordine {
 }
 
 export function addGiftCard(ordine: ordine, giftcard: giftcard): ordine {
+  for (let i = 0; i < ordine.giftcards.length; i++) {
+  if(ordine.giftcards[i].taglio === giftcard.taglio && ordine.giftcards[i].taglio === giftcard.taglio){
+    ordine.giftcards[i].quantita === ordine.giftcards[i].quantita + giftcard.quantita;
+    return ordine;
+  }
+}
+
   // Logic to add a gift card to an order
   ordine.giftcards.push(giftcard);
   return ordine; // Add return statement here

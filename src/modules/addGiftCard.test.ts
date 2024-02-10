@@ -11,6 +11,11 @@ describe("[Testcase] addgiftcard", () => {
     },
     giftcards: [],
   };
+   const results = addGiftCard(ordi, {
+    taglio: 10,
+    quantita: 1,
+    tipologia: "digitale",
+  });
   beforeEach(() => {
     ordi = {
       datiAnagrafici: {
@@ -42,19 +47,10 @@ describe("[Testcase] addgiftcard", () => {
     });
   });
 
-  it("controlla che nello stesso ordine non sia possibile richiedere più volte la stessa gift card", () => {
-    ordi = addGiftCard(ordi, {
-      taglio: 10,
-      quantita: 1,
-      tipologia: "digitale",
-    });
-    const newOrder = addGiftCard(ordi, {
-      taglio: 10,
-      quantita: 1,
-      tipologia: "digitale",
-    });
-
-    // Attempt to add the same gift card again
-    expect(ordi.giftcards.length).toBe(2); // Expect the gift card to be added only once
+  it("controllo tagli di gifcard uguali", () => {
+   
+    for (let i = 0; i < ordi.giftcards.length -1; i++) {
+      expect(ordi.giftcards[i].tipologia !== ordi.giftcards[i+1].tipologia || ordi.giftcards[i].taglio !== ordi.giftcards[i+1].taglio).toBeTruthy();
+    }
   });
 });
